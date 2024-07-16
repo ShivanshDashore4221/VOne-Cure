@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedBack</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'myImages/doctorfavicon.png' %}?ver=2"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'myStyles/styles.css' %}">
+    <style>
+*{
+    margin:0;
+}
+.navcontainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+
+}
+nav > * {
+    text-decoration: none;
+
+    font-size: 20px;
+    padding:0px 10px;
+    color: #000;
+}
+        body{
+            background-image:url('{% static "myImages/newfeedbackpic.jpg" %}') ;
+            background-size: cover;
+            height: 100vh;
+            background-repeat: no-repeat;
+        }
+        td{
+            padding:1rem 2rem;
+        }
+         #val1,#val2,#val3,#val4,#val5{
+            width: 20px;
+             {#background-image: url("{% static 'myImages/star.png' %}");#}
+
+         }
+         .star-rating {
+            display: flex;
+            justify-content: center;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-image: url("{% static 'myImages/star_black.png' %}");
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        {#.star-rating input:checked,#}
+        {#.star-rating input:checked~label~label {#}
+        {#    background-image: url("{% static 'myImages/star.png' %}");#}
+        {# } #}
+    </style>
+</head>
+<body>
+    <header class="navcontainer fixed-top">
+        <h2 class="title">VOneCure Hospital</h2>
+
+        <ul class="nav nav-underline">
+          <li class="nav-item">
+            <a class="nav-link "  href="/myhome">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutus">About Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Patient Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">View Your Appointment</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">View Previous Appointment Record</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Panel of Consultants</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/feedback">Feedback</a>
+          </li>
+          <li>
+            <a class="btn btn-outline-danger" href="/myhome#appointmentbooking" >Book an Appointment</a>
+          </li>
+        </ul>
+    </header>
+
+    <form method="post" action="/addfeedback">
+        {% csrf_token %}
+    <table style="box-shadow: 0px 0px 30px black;margin-left:10%;margin-top: 10%; background-color: rgba(255, 255, 255, 0.6); font-size: 21px;border-radius: 20px;">
+        <tr align="center">
+            <td colspan="2" style="font-size: 30px;">Feedback</td>
+        </tr>
+        <tr>
+            <td>Name<span style="color: red;">*</span></td>
+            <td><input type="text" name="feed_name" placeholder="Enter name..." required style="border-radius: 10px;"></td>
+        </tr>
+        <tr>
+            <td>Email<span style="color: red;">*</span></td>
+            <td><input type="email" name="feed_email" placeholder="Enter email..." required style="border-radius: 10px;"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><textarea name="feed_desc" placeholder="Enter feedback..." style="width: 100%;height: 150px;border-radius: 10px;"></textarea></td>
+        </tr>
+        <tr>
+            <td>Rate Us!</td>
+            <td style="display: flex;justify-content: space-evenly;" class="star-rating">
+{#                <div class="star-rating">#}
+            <input type="radio" name="rating" id="val1" value="1" ><label for="val1"></label>
+            <input type="radio" name="rating" id="val2" value="2" ><label for="val2"></label>
+            <input type="radio" name="rating" id="val3" value="3" ><label for="val3"></label>
+            <input type="radio" name="rating" id="val4" value="4" ><label for="val4"></label>
+            <input type="radio" name="rating"  id="val5" value="5" checked><label for="val5"></label>
+{#            </div>#}
+            </td>
+        </tr>
+        <tr align="center">
+            <td colspan="2"><button type="submit" class="btn btn-success" style="padding: 9px 10px; font-size: 18px;">Submit</button></td>
+        </tr>
+
+    </table>
+    </form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+            const stars = document.querySelectorAll(".star-rating label");
+            stars.forEach((star, idx) => {
+                star.addEventListener("click", () => {
+                    stars.forEach((s, i) => {
+                        if (i <= idx) {
+                            s.style.backgroundImage = "url('{% static "myImages/star.png" %}')";
+                        } else {
+                            s.style.backgroundImage = "url('{% static "myImages/star_black.png" %}')";
+                        }
+                    });
+                });
+            });
+        });
+</script>
+</body>
+</html>

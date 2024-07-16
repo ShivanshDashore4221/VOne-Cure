@@ -1,0 +1,80 @@
+ .wrapper{
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   height: 100vh;
+   /* opacity: 0.65; */
+
+   overflow: auto;
+}
+*{
+    margin:0;
+}
+.navcontainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.6);
+
+}
+nav > * {
+    text-decoration: none;
+
+    font-size: 20px;
+    padding:0px 10px;
+    color: #000;
+}
+.title{
+    margin-left: 10px;
+}
+.title:hover,.btn:hover{
+    transform: scale(1.1);
+    transition: all 0.25s ease-in-out;
+}
+.services-content-box{
+    background-size: cover;
+    background-position: center;
+    height: 10rem;
+    aspect-ratio: 1/1;
+
+}
+.services-animation{
+    animation: service-carousel 2.5s ;
+}
+@keyframes service-carousel {
+    from{transform:translateY(-100%);opacity:0}
+    to{transform:translateY(0);opacity:1}
+}
+.appointmentpage{
+    height:800px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+.tabletheme{
+    margin:5rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 0px 30px black;
+}
+.tabletheme td{
+    padding:20px 25px;
+}
+.header{
+    position:relative;
+}
+.emergencyno{
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: red;
+}
+  .cardtexttheme{
+    text-align: center;
+    padding:1rem;
+    font-size: 20px;
+    font-weight: 600;
+  }
